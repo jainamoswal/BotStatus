@@ -1,0 +1,19 @@
+name: 'Bot Status'
+author: 'Jainam Oswal'
+description: 'An action to automatically update bot status in GitHub Readme.md as well as in Telegram chat. (Channel/Group/Chat)'
+
+runs:
+  using: "composite"
+  steps: 
+    - name: 📀 Install dependency. 📀
+      run: |
+        pip install --upgrade pytz telethon pygithub pip > ignoreme.txt 2>&1
+      shell: bash
+    - name: Run the action.
+      run: python ${{ github.action_path }}/main.py
+      shell: bash
+
+
+branding:
+  icon: 'send'
+  color: 'white'

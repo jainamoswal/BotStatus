@@ -1,0 +1,18 @@
+{
+	"pypi_dlbot": {
+		"start": "start",
+		"sleep": 2
+	},
+	"ixail_bot": {
+		"start": "start",
+		"sleep": 2
+	},
+	"secure_me_robot": {
+		"start": "start",
+		"sleep": 2
+	},
+	"medium_free_robot": {
+		"start": "start",
+		"sleep": 2
+	}
+}
