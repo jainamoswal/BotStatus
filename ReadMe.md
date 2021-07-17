@@ -6,7 +6,6 @@
 [![Contributors](https://img.shields.io/github/contributors/jainamoswal/BotStatus?style=for-the-badge&color=green)](https://github.com/jainamoswal/BotStatus)
 
 
-
 ## BotStatus ~ 
 
 A simple & short repository to show your bot's status in your GitHub README.md file as well as in you channel. 
@@ -24,18 +23,22 @@ A simple & short repository to show your bot's status in your GitHub README.md f
 _⚠️ You'll need a bots.json file and list all bots in the JSON format.
 It can be raw link from `gist.github.com` or directly by the file itself like `https://github.com/<blabla>/raw/<branchname>/<filename>`. But it should point to the raw source._ 
 
+
 <details>
   <summary><b>🤫&nbsp;Environment variables</b></summary>
   <br/>
 
 | 🔒 Secret 🔒 | ✍️ Description ✍️ |
 | :-: | :-: |
-| API_HASH | Get it from [my.telegram.org](https://my.telegram.org) |
-| APP_ID | Get it from [my.telegram.org](https://my.telegram.org) |
-| CHANNEL_ID | Channel ID eg. -10010254xxxxx |
-| MESSAGE_ID | Message ID of the message to edit. |
-| SESSION | [![Run on Repl.it](https://replit.com/badge/github/jainamoswal/SessionString)](https://replit.com/@jainamoswal/SessionString) |
-| BOTS | Raw link of JSON file of bots. [example](./example.json) |
+| `API_HASH` | Get it from [my.telegram.org](https://my.telegram.org) |
+| `APP_ID` | Get it from [my.telegram.org](https://my.telegram.org) |
+| `CHANNEL_ID` | Channel ID eg. -10010254xxxxx |
+| `MESSAGE_ID` | Message ID of the message to edit. |
+| `SESSION` | [![Run on Repl.it](https://replit.com/badge/github/jainamoswal/SessionString)](https://replit.com/@jainamoswal/SessionString) |
+| `BOTS` | Raw link of JSON file of bots. [example](./example.json) |
+  
+<b>Optional variables ~ </b>
+- `FILE_NAME` : Name of the MarkDown file, eg. `README.md`. This is case sensitive. Defaults to `README.md`.
 </details>
 
 
