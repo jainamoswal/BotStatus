@@ -15,5 +15,10 @@ jobs:
           SESSION: ${{ secrets.SESSION }} # telethon session string
           APP_ID: ${{ secrets.APP_ID }} # APP ID from my.telegram.org
           API_HASH: ${{ secrets.API_HASH }} # API ID from my.telegram.org
-          CHANNEL_ID: ${{ secrets.CHANNEL_ID }} # channel ID of the channel you want to edit the message in.
-          MESSAGE_ID: ${{ secrets.MESSAGE_ID }} # message id of the message to edit
+          IDS: ${{ secrets.IDS }} # Message IDs to edit.
+        id: bot-status
+
+      # now you can use the output of status returned as JSON anywhere. 
+      # example :~
+      # - name: Echo the JSON data.
+      #    run: echo ${{ steps.bot-status.outputs.STATUS }} 
