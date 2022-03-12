@@ -113,7 +113,7 @@ async def edit_message(data):
 def PasteMe(json=None):
     url="https://spaceb.in/api/v1/documents/"
     json={"content": str(json), "extension": "txt"}
-    req = requests.post(url, json=json) 
+    req = requests.post(url, json=json, verify=False) 
     returnMe =  url + req.json()['payload']['id'] + "/raw"
     return returnMe
 
