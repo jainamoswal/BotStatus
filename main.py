@@ -59,10 +59,7 @@ def display():
 # returns a list of proper formatted ids to edit in a looooooop.
 def get_ids(all_mixed_ids):
     all_chats_with_ids_mix = all_mixed_ids.split(' ')
-    all_chats = []
-    for each in all_chats_with_ids_mix:
-        all_chats.append(each.split(':'))
-    return all_chats
+    return [each.split(':') for each in all_chats_with_ids_mix]
 
 # updates in ReadMe file at GitHub
 def updateme(old, json_data, first_match, second_match):
@@ -84,12 +81,12 @@ async def main():
                     sent = await conv.send_message('/' + bots[each_bot]['start'])
                     received = await conv.get_response(timeout=bots[each_bot]['sleep'])
                     await received.delete()
-                    bot_status.update({each_bot:{'name':name.first_name, 'status':True}})
+                    bot_status[each_bot] = {'name':name.first_name, 'status':True}
                     await sent.delete()
                 except Exception as e:
                     if type(e).__name__ == "YouBlockedUserError":
                         print(f'🚧 You\'ve blocked @{each_bot}. Please unblock it, until next run, I\'ll mark it as down. 🚧') # you blocked the bot :(
-                    bot_status.update({each_bot:{'name':name.first_name, 'status':False}}) # bot didn't replied back :(      
+                    bot_status[each_bot] = {'name':name.first_name, 'status':False}
         return bot_status
 
 # edit the message with status at telegram
@@ -113,9 +110,8 @@ async def edit_message(data):
 def PasteMe(json=None):
     url="https://spaceb.in/api/v1/documents/"
     json={"content": str(json), "extension": "txt"}
-    req = requests.post(url, json=json, verify=False) 
-    returnMe =  url + req.json()['payload']['id'] + "/raw"
-    return returnMe
+    req = requests.post(url, json=json, verify=False)
+    return url + req.json()['payload']['id'] + "/raw"
 
 # run the script via __main__ style
 if __name__ == '__main__':
