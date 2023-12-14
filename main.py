@@ -63,12 +63,15 @@ def get_ids(all_mixed_ids):
 
 # updates in ReadMe file at GitHub
 def updateme(old, json_data, first_match, second_match):
-    new = '''\n| 🤖 Bot 🤖 | ⭐️ Status ⭐️ |\n| :-: | :-: |\n'''
-    for i in json_data:
-        new += f"| [{json_data[i]['name']}](https://t.me/{i}) | {up_github if json_data[i]['status'] else down_github} |\n"
-    new_string = f"\n{first_match}\n{new}\n`Updated last at ~ {current_time}`\n\n"
-    new_string += f"**Made with ❤️ via [BotStatus](https://github.com/jainamoswal/botstatus)**. \n{second_match}" # self promotion is must ¯\_(ツ)_/¯
-    return re.sub(f'\n{first_match}.*?{second_match}', new_string, old, flags=re.DOTALL)
+    status_table = "| 🤖 Bot 🤖 | ⭐️ Status ⭐️ |\n| :-: | :-: |\n"
+    for username, data in json_data.items():
+        status_icon = up_github if data['status'] else down_github
+        status_table += f"| [{data['name']}](https://t.me/{username}) | {status_icon} |\n"
+    updated_message = (
+        f"\n{first_match}\n{status_table}\n`Updated last at ~ {current_time}`\n\n"
+        f"**Made with ❤️ via [BotStatus](https://github.com/jainamoswal/botstatus)**. \n{second_match}" # self promotion is must ¯\_(ツ)_/¯
+    )
+    return re.sub(f'{re.escape(first_match)}.*?{re.escape(second_match)}', updated_message, old, flags=re.DOTALL)
 
 # fetch status of all bots listed in the raw gist file
 async def main():
